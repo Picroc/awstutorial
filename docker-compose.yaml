@@ -1,0 +1,19 @@
+version: '3.3'
+services:
+  db: # name of the service
+    image: redis # image from docker registry
+    volumes: # mounted folders or disks
+      - db_data:/var/lib/redis # from host : in container
+    restart: always # restart policy
+  web:
+    image: picroc/express-app
+    build: . # build from Dockerfile
+    command: npm start # command to start container
+    volumes:
+      - .:/code
+    ports: # expose ports to host from container
+      - "3000:3000" # host : container
+    depends_on:
+      - db # specify order of running services
+volumes:
+  db_data: {} # define volumes (virtual "disks")
