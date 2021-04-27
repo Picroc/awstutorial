@@ -15,6 +15,6 @@
   },
   "devDependencies": {
     "express-redis": "^2.0.1",
-    "redis": "^2.8.0"
+    "redis": "^3.1.1"
   }
 }
